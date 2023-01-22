@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Tally {
@@ -41,11 +42,31 @@ public class Tally {
         return mostCommon;
     }
 
-    public HashMap<Integer, ArrayList<String>> getTopThree() {
-        HashMap<Integer, ArrayList<String>> topThree = new HashMap<>();
+    public HashMap<Integer, HashMap<String, Integer>> getTopThree(Integer index) {
+        HashMap<Integer, HashMap<String, Integer>> finalTopThree = new HashMap<>();
 
-        //TODO: Get the top 3 most selected numbers for each index
+        //TODO: Maybe tidy this up to make it easier/more efficient
 
-        return topThree;
+        HashMap<String, Integer> topThree = new HashMap<>();
+
+        for (String key : tally.keySet()) {
+            if(topThree.size() < 3) {
+                topThree.put(key, tally.get(key));
+                continue;
+            }
+
+            if(tally.get(key) > Collections.min(topThree.values())) {
+                for (String topThreeKey: topThree.keySet()) {
+                    if(topThree.get(topThreeKey).equals(Collections.min(topThree.values()))) {
+                        topThree.remove(topThreeKey);
+                        topThree.put(key, tally.get(key));
+                        break;
+                    }
+                }
+            }
+        }
+        finalTopThree.put(index, topThree);
+
+        return finalTopThree;
     }
 }

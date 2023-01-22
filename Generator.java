@@ -53,6 +53,13 @@ public class Generator {
                 + tally6.getMostCommon();
 
         System.out.println(bestNumber);
+
+        System.out.println(tally1.getTopThree(1).keySet() + " : " + tally1.getTopThree(1).values());
+        System.out.println(tally2.getTopThree(2).keySet() + " : " + tally2.getTopThree(2).values());
+        System.out.println(tally3.getTopThree(3).keySet() + " : " + tally3.getTopThree(3).values());
+        System.out.println(tally4.getTopThree(4).keySet() + " : " + tally4.getTopThree(4).values());
+        System.out.println(tally5.getTopThree(5).keySet() + " : " + tally5.getTopThree(5).values());
+        System.out.println(tally6.getTopThree(6).keySet() + " : " + tally6.getTopThree(6).values());
     }
 
     private void makeTallies() {
